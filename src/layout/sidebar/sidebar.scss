@@ -1,0 +1,24 @@
+.sidebar {
+    background-color:black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 117px;
+    height: 100%;
+
+    .sidebar_list {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .copyright {
+        color: white;
+        transform: rotate(-90deg);
+        width: 350px;
+
+        p {
+            
+        }
+    }
+}
