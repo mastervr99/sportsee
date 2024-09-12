@@ -1,0 +1,46 @@
+.nutrition {
+    .nutrition-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        
+        .nutrition-element {
+            background-color: #FBFBFB;
+            width: 228px;
+            height: 124px;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+        
+            .nutrition-sub-element {
+                display: flex;
+
+                img {
+                   width: 60px;
+                   height: 60px; 
+                }
+
+                .nutrition-infos {
+                    padding-left: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    h3 {
+                        margin : 0;
+                        font-weight: 700;
+                        font-size: 20px;
+                    }
+
+                    p {
+                        margin-top: 5px;
+                        margin-bottom: 0;
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: #74798C;
+                    }
+                }
+            }
+        }
+    }
+}
