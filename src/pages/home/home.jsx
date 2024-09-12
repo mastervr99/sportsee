@@ -1,7 +1,8 @@
 
 import Sidebar from '../../layout/sidebar/sidebar';
+import Profile from '../profile/profile';
 import './home.scss';
-import Profile from '../../components/profile/profile';
+
 
 function Home() {
     return <div className='home'>

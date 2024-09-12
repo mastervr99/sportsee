@@ -1,0 +1,18 @@
+.profile {
+    display: flex;
+    padding-left: 100px;
+    padding-top: 20px;
+    .profile-main {
+        width: 835px;
+
+        .profile_charts_nutrition {
+            display: flex;
+
+            .square_charts{
+                display: flex;
+                gap: 30px;
+            }
+        }
+
+    }
+}
