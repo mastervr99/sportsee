@@ -1,24 +1,32 @@
-import Nutrition from '../../components/nutrition/nutrition';
-import { userModel } from '../../models/userModel';
 import './profile.scss';
+import Nutrition from '../../components/nutrition/nutrition';
+import { userModel } from '../../services/models/userModel';
 import React, { useEffect, useState } from 'react';
-import { getUserInfos } from '../../services/service'; // Assure-toi que le chemin est correct
+import { getUserInfos } from '../../services/userServiceMock';
+import { getUserActivity } from '../../services/userServiceMock';
 import ActivityChart from '../../components/activityChart/activityChart';
 import SessionChart from '../../components/sessionChart/sessionChart';
 import PerformanceChart from '../../components/performanceChart/performanceChart';
 import ScoreChart from '../../components/scoreChart/scoreChart';
+import { userActivityModel } from '../../services/models/userActivityModel';
 
 
 function Profile({userId}) {
 
-    const [userData, setUserData] = useState(null);
+    const [userInfos, setUserInfos] = useState(null);
+    const [userActivity, setUserActivity] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const data = await getUserInfos(userId);
-                const user = userModel(data.data);
-                setUserData(user);
+                const userInfosData = await getUserInfos(userId);
+                const user = userModel(userInfosData.data);
+                setUserInfos(user);
+
+                const userActivityData = await getUserActivity(userId);
+                const activityData = userActivityModel(userActivityData.data);
+                setUserActivity(activityData);
+
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
@@ -27,27 +35,27 @@ function Profile({userId}) {
         fetchData();
     }, [userId]);
     
-    console.log(userData);
-    if (!userData) {
+    console.log(userActivity);
+    if (!userInfos) {
         return <div>Loading...</div>;
     }
 
     return <div className='profile'>
                 <div className='profile-main'>
                     <div>
-                        <h1>Bonjour {userData.userInfos.firstName}</h1>
+                        <h1>Bonjour {userInfos.userInfos.firstName}</h1>
                         <p>Félicitations ! Vous avez explosé vos objectifs hier</p>
                     </div>
                     <div className='profile_charts_nutrition'>
                         <div>
-                            <ActivityChart />
+                            {userActivity && <ActivityChart userdata={userActivity} />}
                             <div className='square_charts'>
                                 <SessionChart/>
                                 <PerformanceChart />
                                 <ScoreChart/>
                             </div>
                         </div>
-                        <Nutrition userData={userData}/>
+                        <Nutrition userData={userInfos}/>
                     </div>
                 </div>
             </div>
