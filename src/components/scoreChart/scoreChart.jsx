@@ -1,13 +1,38 @@
 import './scoreChart.scss'
-import React, { PureComponent } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import { userModel } from '../../services/models/userModel';
+import { getUserInfos } from '../../services/userService';
 
-const data = [
-  { name: 'Group A', value: 400 },
-];
+
 const COLORS = ['#FF0000'];
 
-function ScoreChart(userdata){
+function ScoreChart({userId}){
+    const [userInfos, setUserInfos] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const userInfosData = await getUserInfos(userId);
+                const user = userModel(userInfosData.data);
+                setUserInfos(user);
+
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        fetchData();
+    }, [userId]);
+    
+    const data = [ {name:'Score', value: 0}];
+
+    if (!userInfos) {
+        return <div>Loading...</div>;
+    } else {
+        data[0].value = userInfos.score;
+    }
+
     return <div className='scoreChart'>
         <ResponsiveContainer width="100%" height="100%">
             <PieChart width={200} height={200}>
@@ -38,7 +63,7 @@ function ScoreChart(userdata){
                     y={135}
                     style={{fontSize: '15px', fontWeight: '500', color: "#20253A"}}
                 >
-                    12%
+                    {userInfos.score}%
                 </text>
                 <text
                     x={130}
