@@ -60,6 +60,10 @@ const mockDataUserSessions = {
 };
 
 
+const mockDataUserAverageSessions = {"data":{"userId":12,"sessions":[{"day":1,"sessionLength":30},{"day":2,"sessionLength":23},{"day":3,"sessionLength":45},{"day":4,"sessionLength":50},{"day":5,"sessionLength":0},{"day":6,"sessionLength":0},{"day":7,"sessionLength":60}]}};
+
+const mockDataUserPerformance = {"data":{"userId":12,"kind":{"1":"cardio","2":"energy","3":"endurance","4":"strength","5":"speed","6":"intensity"},"data":[{"value":80,"kind":1},{"value":120,"kind":2},{"value":140,"kind":3},{"value":50,"kind":4},{"value":200,"kind":5},{"value":90,"kind":6}]}}
+
 export async function getUserInfos(userId) {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -72,6 +76,22 @@ export async function getUserActivity(userId) {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(mockDataUserSessions);
+        }, 1000);
+    });
+}
+
+export async function getUserAverageSessions(userId) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(mockDataUserAverageSessions);
+        }, 1000);
+    });
+}
+
+export async function getUserPerformance(userId) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(mockDataUserPerformance);
         }, 1000);
     });
 }

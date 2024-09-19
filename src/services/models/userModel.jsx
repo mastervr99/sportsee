@@ -6,7 +6,7 @@ export function userModel(data) {
             lastName: data.userInfos.lastName,
             age: data.userInfos.age
         },
-        score: data.score,
+        score: (data.todayScore *100),
         keyData: {
             calorieCount: data.keyData.calorieCount,
             proteinCount: data.keyData.proteinCount,
