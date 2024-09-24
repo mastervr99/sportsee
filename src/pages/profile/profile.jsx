@@ -2,15 +2,18 @@ import './profile.scss';
 import Nutrition from '../../components/nutrition/nutrition';
 import { userModel } from '../../services/models/userModel';
 import React, { useEffect, useState } from 'react';
-// import { getUserInfos } from '../../services/userServiceMock';
+import { useParams } from 'react-router-dom';
 import ActivityChart from '../../components/activityChart/activityChart';
 import SessionChart from '../../components/sessionChart/sessionChart';
 import PerformanceChart from '../../components/performanceChart/performanceChart';
 import ScoreChart from '../../components/scoreChart/scoreChart';
 import { getUserInfos } from '../../services/userService';
+import hand_clapping from '../../assets/images/hand_clapping.png'
 
 
-function Profile({userId}) {
+function Profile() {
+
+    const { userId } = useParams();
 
     const [userInfos, setUserInfos] = useState(null);
 
@@ -30,18 +33,18 @@ function Profile({userId}) {
     }, [userId]);
     
     if (!userInfos) {
-        return <div>Loading...</div>;
+        return <div className='error_loading'>Loading...</div>;
     }
 
     return <div className='profile'>
                 <div className='profile-main'>
                     <div>
-                        <h1>Bonjour {userInfos.userInfos.firstName}</h1>
-                        <p>Félicitations ! Vous avez explosé vos objectifs hier</p>
+                        <h1>Bonjour <span>{userInfos.userInfos.firstName}</span></h1>
+                        <p>Félicitations ! Vous avez explosé vos objectifs hier<img src={hand_clapping} /></p>
                     </div>
                     <div className='profile_charts_nutrition'>
                         <div>
-                        <ActivityChart userId={userId} />
+                            <ActivityChart userId={userId} />
                             <div className='square_charts'>
                                 <SessionChart userId={userId}/>
                                 <PerformanceChart userId={userId} />

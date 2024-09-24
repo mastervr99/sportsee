@@ -5,12 +5,30 @@
     .profile-main {
         width: 835px;
 
+        h1 {
+            font-size: 48px;
+
+            span {
+                color: #E60000;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            display: flex;
+            
+            img {
+                padding-left: 5px;
+            }
+        }
+
         .profile_charts_nutrition {
             display: flex;
+            margin-top: 80px;
 
             .square_charts{
                 display: flex;
-                gap: 30px;
+                justify-content: space-between;
             }
         }
     }
