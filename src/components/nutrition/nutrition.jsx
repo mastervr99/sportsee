@@ -13,7 +13,7 @@ function Nutrition({userData}) {
                 <div className='nutrition-sub-element'>
                     <img src={Calories} alt="" />
                     <div className='nutrition-infos'>
-                        <h3>{userData.keyData.calorieCount}</h3>
+                        <h3>{userData.keyData.calorieCount}kCal</h3>
                         <p>Calories</p>
                     </div>
                 </div>
@@ -22,7 +22,7 @@ function Nutrition({userData}) {
                 <div className='nutrition-sub-element'>
                     <img src={Protein} alt="" />
                     <div className='nutrition-infos'>
-                    <h3>{userData.keyData.proteinCount}</h3>
+                    <h3>{userData.keyData.proteinCount}g</h3>
                         <p>Protéines</p>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ function Nutrition({userData}) {
                 <div className='nutrition-sub-element'>
                     <img src={Glucides} alt="" />
                     <div className='nutrition-infos'>
-                    <h3>{userData.keyData.carbohydrateCount}</h3>
+                    <h3>{userData.keyData.carbohydrateCount}g</h3>
                         <p>Glucides</p>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ function Nutrition({userData}) {
                 <div className='nutrition-sub-element'>
                     <img src={Lipides} alt="" />
                     <div className='nutrition-infos'>
-                    <h3>{userData.keyData.lipidCount}</h3>
+                    <h3>{userData.keyData.lipidCount}g</h3>
                         <p>Lipides</p>
                     </div>
                 </div>
