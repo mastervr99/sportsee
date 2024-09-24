@@ -53,6 +53,7 @@ function ScoreChart({userId}){
                     outerRadius={80}
                     fill="#8884d8"
                     dataKey="value"
+                    cornerRadius={5}
                 >
                     {data.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -61,21 +62,21 @@ function ScoreChart({userId}){
                 <text
                     x={130}
                     y={135}
-                    style={{fontSize: '15px', fontWeight: '500', color: "#20253A"}}
+                    style={{fontSize: '26px', fontWeight: '700', color: "#20253A"}}
                 >
                     {userInfos.score}%
                 </text>
                 <text
                     x={130}
                     y={155}
-                    style={{fontSize: '15px', fontWeight: '500', color: "#20253A"}}
+                    style={{fontSize: '16px', fontWeight: '500', color: "#74798C"}}
                 >
                     de votre
                 </text>
                 <text
                     x={130}
                     y={175}
-                    style={{fontSize: '15px', fontWeight: '500', color: "#20253A"}}
+                    style={{fontSize: '16px', fontWeight: '500', color: "#74798C"}}
                 >
                     objectif
                 </text>
