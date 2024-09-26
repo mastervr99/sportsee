@@ -37,8 +37,8 @@ function ScoreChart({userId}){
         <ResponsiveContainer width="100%" height="100%">
             <PieChart width={200} height={200}>
                 <text
-                    x={50}
-                    y={45}
+                    x={30}
+                    y={40}
                     style={{fontSize: '15px', fontWeight: '500', color: "#20253A"}}
                 >
                     Score
@@ -47,10 +47,9 @@ function ScoreChart({userId}){
                     data={data}
                     cx="50%"
                     cy="50%"
-                    startAngle={220}
-                    endAngle={75}
-                    innerRadius={70}
-                    outerRadius={80}
+                    startAngle={215}
+                    endAngle={80}
+                    outerRadius={90}
                     fill="#8884d8"
                     dataKey="value"
                     cornerRadius={5}
@@ -59,24 +58,26 @@ function ScoreChart({userId}){
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                 </Pie>
+                <Pie fill="white" dataKey="bg" startAngle={0} endAngle={360} data={[{bg: 360}]} outerRadius={80}/>
                 <text
-                    x={130}
-                    y={135}
-                    style={{fontSize: '26px', fontWeight: '700', color: "#20253A"}}
+                    x={102}
+                    y={125}
+                    dominantBaseline='middle'
+                    style={{fontSize: '26px', fontWeight: '700', fill: "#20253A"}}
                 >
                     {userInfos.score}%
                 </text>
                 <text
-                    x={130}
-                    y={155}
-                    style={{fontSize: '16px', fontWeight: '500', color: "#74798C"}}
+                    x={100}
+                    y={160}
+                    style={{fontSize: '16px', fontWeight: '500', fill: "#74798C"}}
                 >
                     de votre
                 </text>
                 <text
-                    x={130}
-                    y={175}
-                    style={{fontSize: '16px', fontWeight: '500', color: "#74798C"}}
+                    x={100}
+                    y={190}
+                    style={{fontSize: '16px', fontWeight: '500', fill: "#74798C"}}
                 >
                     objectif
                 </text>

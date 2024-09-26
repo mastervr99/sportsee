@@ -13,6 +13,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        li {
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
     }
 }
 

@@ -19,7 +19,6 @@ function SessionChart({userId}){
             const userData = await getUserAverageSessions(userId);
             const sessionsData = userAverageSessionsModel(userData.data);
             setUserDataArray(sessionsData);
-            console.log(sessionsData);
         } catch (error) {
             console.error('Error fetching user data:', error);
         }

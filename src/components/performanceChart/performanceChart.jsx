@@ -6,7 +6,7 @@ import { getUserPerformance } from '../../services/userService';
 
 function PerformanceChart({userId}){
 
-  const [userDataArray, setUserDataArray] = useState([]);
+  let [userDataArray, setUserDataArray] = useState([]);
 
   useEffect(() => {
 
@@ -27,6 +27,25 @@ function PerformanceChart({userId}){
   if (userDataArray.length === 0) {
       return <div>Loading...</div>;
   }
+
+  const translater = (kind) => {
+    const translations = {
+      'cardio': 'Cardio',
+      'energy': 'Energie',
+      'endurance': 'Endurance',
+      'strength': 'Force',
+      'speed': 'Vitesse',
+      'intensity': 'Intensité'
+    };
+    return translations[kind] || 'Inconnu';
+  };
+
+  userDataArray = userDataArray
+  .map(item => ({
+    value: item.value,
+    kind: translater(item.kind),
+  }))
+  .reverse();
 
     return <div className='performanceChart' >
         <ResponsiveContainer width="100%" height="100%">

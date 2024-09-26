@@ -1,8 +1,8 @@
 html, body {
-    height: 100vh;
     margin: 0;
     padding: 0;
     font-family: 'Roboto';
+    height: 100%;
 
     
     #root {
@@ -11,6 +11,7 @@ html, body {
 
     .app_main {
         display: flex;
+        height: 100%;
     }
 }
 

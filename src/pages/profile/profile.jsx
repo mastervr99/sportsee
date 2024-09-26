@@ -14,7 +14,6 @@ import hand_clapping from '../../assets/images/hand_clapping.png'
 function Profile() {
 
     const { userId } = useParams();
-
     const [userInfos, setUserInfos] = useState(null);
 
     useEffect(() => {
@@ -40,7 +39,7 @@ function Profile() {
                 <div className='profile-main'>
                     <div>
                         <h1>Bonjour <span>{userInfos.userInfos.firstName}</span></h1>
-                        <p>Félicitations ! Vous avez explosé vos objectifs hier<img src={hand_clapping} /></p>
+                        <p className='introduction'>Félicitations ! Vous avez explosé vos objectifs hier<img src={hand_clapping} /></p>
                     </div>
                     <div className='profile_charts_nutrition'>
                         <div>

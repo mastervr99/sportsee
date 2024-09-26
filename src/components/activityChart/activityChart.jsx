@@ -33,7 +33,7 @@ function ActivityChart({userId}){
 
     const renderLegendText = (value, entry) => {
       const { color } = entry;
-      return <span style={{ color: '#74798C' }}>{value}</span>;
+      return <span style={{ color: '#74798C', fontSize: '14px', marginRight: '20px' }}>{value}</span>;
     };
 
     return <div className="activityChart">
@@ -50,15 +50,14 @@ function ActivityChart({userId}){
             bottom: 30,
           }}
         >
-          <CartesianGrid strokeDasharray="3" vertical={false} stroke="#DEDEDE"/>
-          <text x={30} y={45} style={{fontSize: '16px', fontWeight: 'bold', fill: "#20253A"}}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#DEDEDE"/>
+          <text x={30} y={45} style={{fontSize: '15px', fontWeight: 500, fill: "#20253A"}}>
                 Activité quotidienne
-            </text>
-
-          <XAxis dataKey="day"  tickLine={false}  tick={{ fill: '#9B9EAC' }} tickMargin={16}/>
-          <YAxis yAxisId="kilogram" tickMargin={30} tick={{fill: "#9B9EAC", strokeWidth: 0.5}} orientation="right"  tickLine={false} stroke="transparent" domain={['dataMin-2', 'dataMax+1']}  tickCount={3}/>
+          </text>
+          <XAxis dataKey="day"  tickLine={false}  tick={{ fill: '#9B9EAC', strokeWidth: 0.5 }} stroke="#DEDEDE" tickMargin={16}/>
+          <YAxis yAxisId="kilogram"  tickMargin={30} tick={{fill: "#9B9EAC", strokeWidth: 0.5}} orientation="right"  tickLine={false} stroke="transparent" domain={['dataMin-2', 'dataMax+1']}  tickCount={3}/>
           <YAxis hide yAxisId="calories" />
-          <Legend className='activity_chart_legend' formatter={renderLegendText} verticalAlign="top" iconType="circle" align="right" iconSize={8} height={80} payload={
+          <Legend formatter={renderLegendText} verticalAlign="top" iconType="circle" align="right" iconSize={8} height={80} payload={
                         [{
                             value: 'Poids (kg)',
                             color: "#282D30",

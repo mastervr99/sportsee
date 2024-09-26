@@ -14,7 +14,7 @@ function App() {
             <Sidebar/>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/profile/:id" element={<Profile />} />
+              <Route path="/profile/:userId" element={<Profile />} />
             </Routes>
           </div>
         </Router>
