@@ -7,6 +7,7 @@ import { getUserPerformance } from '../../services/userService';
 function PerformanceChart({userId}){
 
   let [userDataArray, setUserDataArray] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
 
@@ -14,8 +15,14 @@ function PerformanceChart({userId}){
         try {
 
             const userData = await getUserPerformance(userId);
+
+
+          if (typeof userData === 'string') {
+              setError(userData);
+          } else {
             const performanceData = userPerformanceModel(userData.data);
             setUserDataArray(performanceData);
+          }
         } catch (error) {
             console.error('Error fetching user data:', error);
         }
@@ -23,6 +30,10 @@ function PerformanceChart({userId}){
 
     fetchData();
   }, [userId]);
+
+  if (error) {
+    return <div className='error_message'>{error}</div>;
+  }
 
   if (userDataArray.length === 0) {
       return <div>Loading...</div>;

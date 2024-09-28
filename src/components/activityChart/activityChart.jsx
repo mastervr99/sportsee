@@ -9,15 +9,21 @@ import ActivityTooltip from './activityTooltip';
 function ActivityChart({userId}){
   
   const [userDataArray, setUserDataArray] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
 
       async function fetchData() {
         try {
 
-            const userActivityData = await getUserActivity(userId);
+          const userActivityData = await getUserActivity(userId);
+
+          if (typeof userActivityData === 'string') {
+              setError(userActivityData);
+          } else {
             const activityData = userActivityModel(userActivityData.data);
             setUserDataArray(activityData);
+          }
 
         } catch (error) {
             console.error('Error fetching user data:', error);
@@ -26,6 +32,10 @@ function ActivityChart({userId}){
 
     fetchData();
   }, [userId]);
+
+  if (error) {
+    return <div className='error_message'>{error}</div>;
+  }
 
   if (userDataArray.length === 0) {
       return <div>Loading...</div>;

@@ -10,6 +10,7 @@ import SessionCursor from './sessionCursor';
 function SessionChart({userId}){
     
   const [userDataArray, setUserDataArray] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
 
@@ -17,8 +18,14 @@ function SessionChart({userId}){
         try {
 
             const userData = await getUserAverageSessions(userId);
+
+          if (typeof userData === 'string') {
+              setError(userData);
+          } else {
             const sessionsData = userAverageSessionsModel(userData.data);
             setUserDataArray(sessionsData);
+          }
+
         } catch (error) {
             console.error('Error fetching user data:', error);
         }
@@ -26,6 +33,10 @@ function SessionChart({userId}){
 
     fetchData();
   }, [userId]);
+
+  if (error) {
+    return <div className='error_message'>{error}</div>;
+  }
 
   if (userDataArray.length === 0) {
       return <div>Loading...</div>;

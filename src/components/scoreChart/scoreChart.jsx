@@ -9,13 +9,19 @@ const COLORS = ['#FF0000'];
 
 function ScoreChart({userId}){
     const [userInfos, setUserInfos] = useState(null);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const userInfosData = await getUserInfos(userId);
-                const user = userModel(userInfosData.data);
-                setUserInfos(user);
+
+                if (typeof userInfosData === 'string') {
+                    setError(userInfosData);
+                } else {
+                    const user = userModel(userInfosData.data);
+                    setUserInfos(user);
+                }
 
             } catch (error) {
                 console.error('Error fetching user data:', error);
@@ -26,6 +32,11 @@ function ScoreChart({userId}){
     }, [userId]);
     
     const data = [ {name:'Score', value: 0}];
+
+    if (error) {
+        return <div className='error_message'>{error}</div>;
+    }
+    
 
     if (!userInfos) {
         return <div>Loading...</div>;
